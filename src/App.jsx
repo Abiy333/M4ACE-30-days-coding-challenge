@@ -1,32 +1,41 @@
-import React from "react";
+import React, { useState } from "react";
 import Persist from "./components/Persist";
 import ProfileCard from "./components/ProfileCard";
 import SkeletonCard from "./components/SkeletonCard";
 import BookingForm from "./components/BookingForm";
 import ProgressiveImage from "./components/ProgressiveImage";
+import MovieCard from "./components/MovieCard";
+import Modal from "./components/Modal";
 
 export default function App() {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
   return (
-    <div className="min-h-screen bg-gray-950 p-8 flex flex-col items-center gap-10">
-      <h1 className="text-white text-3xl font-bold">Image Engine Test</h1>
+    <div className="min-h-screen bg-gray-950 text-white flex flex-col items-center justify-center">
+      <h1 className="text-3xl font-bold mb-8">Day 8: The Focus Trap</h1>
 
-      <div className="w-full max-w-2xl">
-        <h2 className="text-gray-400 mb-2">Test 1: Valid Image (Blur-up)</h2>
-        <ProgressiveImage
-          lowResSrc="https://images.unsplash.com/photo-1707343843437-caacff5cfa74?q=10&w=20"
-          highResSrc="https://images.unsplash.com/photo-1707343843437-caacff5cfa74?q=80&w=2000"
-          alt="Mountain landscape"
-        />
-      </div>
+      <button
+        onClick={() => setIsModalOpen(true)}
+        className="bg-blue-600 hover:bg-blue-500 px-6 py-3 rounded-lg font-bold outline-none focus:ring-4 focus:ring-blue-500/50"
+      >
+        Open Security Settings
+      </button>
 
-      <div className="w-full max-w-2xl">
-        <h2 className="text-gray-400 mb-2">Test 2: Broken Link (Fallback)</h2>
-        <ProgressiveImage
-          lowResSrc=""
-          highResSrc="https://images.unsplash.com/this-image-does-not-exist.jpg"
-          alt="Broken image test"
+      <Modal
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+        title="Authentication Required"
+      >
+        <p className="mb-4">
+          Your mouse is useless here. Try pressing Tab, Shift+Tab, and Escape.
+          Notice how your focus perfectly loops inside this box.
+        </p>
+        <input
+          type="password"
+          placeholder="Enter Admin Password"
+          className="w-full bg-gray-800 border border-gray-700 rounded px-4 py-2 text-white outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500"
         />
-      </div>
+      </Modal>
     </div>
   );
 }
