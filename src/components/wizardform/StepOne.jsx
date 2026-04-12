@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function StepOne({ prev, next, formData, setFormData }) {
+export default function StepOne({ next, formData, setFormData }) {
   return (
     <div>
       <label>
