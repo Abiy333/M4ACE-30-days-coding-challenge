@@ -1,17 +1,28 @@
-import React, { useState } from "react";
-import Persist from "./components/Persist";
-import ProfileCard from "./components/ProfileCard";
-import SkeletonCard from "./components/SkeletonCard";
-import BookingForm from "./components/BookingForm";
-import ProgressiveImage from "./components/ProgressiveImage";
-import MovieCard from "./components/MovieCard";
-import Modal from "./components/Modal";
-import SmartPag from "./components/smartPag";
+import React from "react";
+import ThemeProvider from "./components/Theme-toggle/ThemeProvider";
+import ToastProvider from "./components/toast_notification/ToastProvider";
+import ThemeToggle from "./components/Theme-toggle/ThemeToggle";
+import ToastContainer from "./components/toast_notification/ToastContainer";
+import WizardForm from "./components/wizardform/WizardForm";
 
 export default function App() {
   return (
-    <div className="min-h-screen bg-gray-950 text-white flex flex-col items-center justify-center">
-      <SmartPag />
-    </div>
+    <ThemeProvider>
+      {/* Wrap everything else in the Toast engine */}
+      <ToastProvider>
+        <div className="min-h-screen bg-white text-gray-900 dark:bg-gray-900 dark:text-white transition-colors duration-300">
+          <header>
+            <h1>My Awesome App</h1>
+            <ThemeToggle />
+          </header>
+
+          <main>
+            <WizardForm />
+          </main>
+
+          <ToastContainer />
+        </div>
+      </ToastProvider>
+    </ThemeProvider>
   );
 }

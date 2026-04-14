@@ -3,30 +3,26 @@ import React from "react";
 export default function StepTwo({ prev, next, formData, setFormData }) {
   return (
     <div>
-      <label>
-        Password
-        <input
-          type="password"
-          name=""
-          value={formData.password}
-          id=""
-          onChange={(e) => {
-            setFormData({ ...formData, password: e.target.value });
-          }}
-        />
-      </label>
-      <label>
-        Phone Number
-        <input
-          type="tel"
-          name=""
-          id=""
-          value={formData.phoneNo}
-          onChange={(e) => {
-            setFormData({ ...formData, phoneNo: e.target.value });
-          }}
-        />
-      </label>
+      <label htmlFor="password">Password</label>
+      <input
+        type="password"
+        name="password"
+        value={formData.password}
+        id="password"
+        onChange={(e) => {
+          setFormData({ ...formData, password: e.target.value });
+        }}
+      />
+      <label htmlFor="tel">Phone Number</label>
+      <input
+        type="tel"
+        name="tel"
+        id="tel"
+        value={formData.phoneNo}
+        onChange={(e) => {
+          setFormData({ ...formData, phoneNo: e.target.value });
+        }}
+      />
       <button
         type="button"
         onClick={() => {

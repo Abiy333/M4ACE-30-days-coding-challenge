@@ -6,7 +6,7 @@ export default function ToastContainer() {
   const { toasts, removeToast } = useToast();
 
   return (
-    <div className="toast-container">
+    <div aria-live="polite" className="toast-container">
       {toasts.map((toast) => (
         <div key={toast.id} className="toast">
           <p>{toast.message}</p>

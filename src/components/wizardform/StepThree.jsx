@@ -10,18 +10,16 @@ export default function StepThree({ prev, formData, setFormData }) {
     <div>
       <form action="" onSubmit={handleSubmit}>
         <legend>Final Review</legend>
-        <label>
-          Comments
-          <input
-            type="text"
-            name=""
-            value={formData.comment}
-            id=""
-            onChange={(e) => {
-              setFormData({ ...formData, comment: e.target.value });
-            }}
-          />
-        </label>
+        <label htmlFor="comment">Comments</label>
+        <input
+          type="text"
+          name="comment"
+          value={formData.comment}
+          id="comment"
+          onChange={(e) => {
+            setFormData({ ...formData, comment: e.target.value });
+          }}
+        />
         <button
           type="button"
           onClick={() => {
